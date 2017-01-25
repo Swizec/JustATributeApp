@@ -49,6 +49,29 @@ const Images = [
 export default class JustATributeApp extends Component {
     state = {
         index: 0,
+        imageWidth: null
+    }
+
+    nextImage(event) {
+        const { index, imageWidth } = this.state,
+              X = event.nativeEvent.locationX,
+              delta = (X < imageWidth/2) ? -1 : +1;
+
+        let newIndex = (index + delta) % Images.length;
+
+        if (newIndex < 0) {
+            newIndex = Images.length - Math.abs(newIndex);
+        }
+
+        this.setState({
+            index: newIndex
+        });
+    }
+
+    onImageLayout(event) {
+        this.setState({
+            imageWidth: event.nativeEvent.layout.width
+        });
     }
 
     render() {
@@ -57,10 +80,14 @@ export default class JustATributeApp extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.empty} />
-                <Image source={{uri: image.uri}}
-                       style={styles.image}>
-                    <Text style={styles.imageLabel}>{image.label}</Text>
-                </Image>
+                <TouchableHighlight onPress={this.nextImage.bind(this)}
+                                    style={styles.image}>
+                    <Image source={{uri: image.uri}}
+                           style={styles.image}
+                           onLayout={this.onImageLayout.bind(this)}>
+                        <Text style={styles.imageLabel}>{image.label}</Text>
+                    </Image>
+                </TouchableHighlight>
                 <View style={styles.empty} />
             </View>
         );
