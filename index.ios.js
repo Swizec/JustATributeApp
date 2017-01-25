@@ -47,23 +47,26 @@ const Images = [
 ];
 
 export default class JustATributeApp extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
-  }
+    state = {
+        index: 0,
+    }
+
+    render() {
+        const image = Images[this.state.index];
+
+        return (
+            <View style={styles.container}>
+                <View style={styles.empty} />
+                <Image source={{uri: image.uri}}
+                       style={styles.image}>
+                    <Text style={styles.imageLabel}>{image.label}</Text>
+                </Image>
+                <View style={styles.empty} />
+            </View>
+        );
+    }
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -71,17 +74,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#abcdef',
-    },
-    welcome: {
-        flex: 1,
-        fontSize: 25,
-        textAlign: 'center',
-        margin: 45,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
     },
     image: {
         flex: 2,
