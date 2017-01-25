@@ -66,22 +66,38 @@ export default class JustATributeApp extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#abcdef',
+    },
+    welcome: {
+        flex: 1,
+        fontSize: 25,
+        textAlign: 'center',
+        margin: 45,
+    },
+    instructions: {
+        textAlign: 'center',
+        color: '#333333',
+        marginBottom: 5,
+    },
+    image: {
+        flex: 2,
+        width: 320,
+        justifyContent: 'flex-end',
+        alignItems: 'center'
+    },
+    imageLabel: {
+        textAlign: 'center',
+        backgroundColor: 'rgba(100, 100, 100, 0.5)',
+        color: 'white',
+        width: 320
+    },
+    empty: {
+        flex: 1
+    }
 });
 
 AppRegistry.registerComponent('JustATributeApp', () => JustATributeApp);
