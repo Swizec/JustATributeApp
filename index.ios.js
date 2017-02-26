@@ -60,7 +60,7 @@ export default class JustATributeApp extends Component {
         let newIndex = (index + delta) % Images.length;
 
         if (newIndex < 0) {
-            newIndex = Images.length - Math.abs(newIndex);
+            newIndex = Images.length + newIndex;
         }
 
         this.setState({
